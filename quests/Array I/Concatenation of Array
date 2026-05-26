@@ -1,0 +1,68 @@
+// First Approach {O(N)}
+class Solution {
+public:
+    vector<int> getConcatenation(vector<int>& nums) {
+        int nums_size = nums.size();
+        vector<int> new_nums;
+        for (int i = 0; i < nums_size; i++){
+            new_nums.push_back(nums[i]);
+        }
+        for (int i = 0; i < nums_size; i++){
+            new_nums.push_back(nums[i]);
+        }
+        return new_nums;
+    }
+};
+
+- Although correct, this is the slowest approach due to dynamic memory overhead.
+- `new_nums` starts with a size and capacity of 0.
+- On every `push_back`, C++ vectors utilize a geometric growth strategy (doubling capacity when full: 0 -> 1 -> 2 -> 4 -> 8 -> 16...).
+- Each capacity breach forces the system to allocate a new memory block, copy all existing elements, and deallocate the old block. 
+- While the amortized time complexity remains O(N), these frequent background operations cause a noticeable performance penalty.
+
+//Second Approach {O(N)}
+class Solution {
+public:
+    vector<int> getConcatenation(vector<int>& nums) {
+        vector<int> new_nums = nums;
+        new_nums.insert (new_nums.end(), nums.begin(), nums.end());
+        return new_nums;
+    }
+};
+
+- Cleaner code, but it still triggers a single memory reallocation penalty.
+- Initializing `new_nums = nums` sets its initial capacity to exactly N.
+- When `std::insert` attempts to append the next N elements, the vector runs out of space and is forced to reallocate to a capacity of 2N. This results in the first N elements being copied twice.
+
+//Third Approach {O(N)}
+class Solution {
+public:
+    vector<int> getConcatenation(vector<int>& nums) {
+        int nums_size = nums.size();
+        vector<int> new_nums(2 * nums_size);
+        for (int i = 0; i < nums_size; i++){
+            new_nums[i] = nums[i];
+            new_nums[i + nums_size] = nums[i];
+        }
+        return new_nums;
+    }
+};
+
+- Fastest Approach because new vector new_nums has a fixed size block of memory allocated.
+- Instantly allocates a fixed memory block for all 2N elements right at the start.
+- Eliminates all resizing, reallocation, and data shifting; the loop directly overwrites pre-allocated memory addresses via direct indexing.
+
+//Fourth Approach {O(N)}
+class Solution {
+public:
+    vector<int> getConcatenation(vector<int>& nums) {
+        vector<int> new_nums;
+        new_nums.reserve (2 * nums.size());
+        new_nums.insert(new_nums.end(), nums.begin(), nums.end());
+        new_nums.insert(new_nums.end(), nums.begin(), nums.end());
+        return new_nums;
+    }
+};
+
+- Ties for Fastest Approach.
+- Uses `reserve()` to allocate a fixed block upfront (like Third Approach), but retains the clean, loopless syntax of built-in C++ functions.
