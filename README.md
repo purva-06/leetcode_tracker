@@ -1,2 +1,6 @@
 # leetcode_tracker
 -> Daily or not-so daily updates of the problems I solve on leetcode.
+
+# Day-1 (Taking it slow)
+- Leetcode quests -> Array I -> Q1. Concatenation of Array (Easy) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(N)]
+- (https://leetcode.com/problems/concatenation-of-array/description/?envType=problem-list-v2&envId=dsa-linear-shoal-array-i)
