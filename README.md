@@ -4,3 +4,7 @@
 # Day-1 (Taking it slow)
 - Leetcode quests -> Array I -> Q1. Concatenation of Array (Easy) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(N)]
 - (https://leetcode.com/problems/concatenation-of-array/description/?envType=problem-list-v2&envId=dsa-linear-shoal-array-i)
+
+# Day-2 
+- Leetcode quests -> Array I -> Q2. Shuffle the Array (Easy) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(N)]
+- (https://leetcode.com/problems/shuffle-the-array/?envType=problem-list-v2&envId=dsa-linear-shoal-array-i)
