@@ -1,1 +1,62 @@
+// First Approach {O(N)}
+class Solution {
+public:
+    vector<int> shuffle(vector<int>& nums, int n) {
+        int l = nums.size();
+        vector<int> new_nums (l);
+        int j=0;
+        for (int i = 0; i < n; i++){
+            new_nums[j]=nums[i];
+            j+=2;
+        }
+        j=1;
+        for (int i = n; i < l; i++){
+            new_nums[j]=nums[i];
+            j+=2;
+        }
+        return new_nums;
+    }
+};
+
+- uses two loops, first one for placing first half of nums in odd places of new_nums and second loop for placing second half of nums in even places of new_nums.
+
+// Second Approach {O(N)}
+class Solution {
+public:
+    vector<int> shuffle(vector<int>& nums, int n) {
+        int l = nums.size();
+        vector<int> new_nums (l);
+        for (int i = 0; i < n; i++){
+            new_nums[2 * i] = nums[i];
+            new_nums[2 * i + 1] = nums[i + n];
+        }
+        return new_nums;
+    }
+};
+
+- uses single loop for handelling even and odd placements in new_nums.
+
+// Third Approach {O(N)}
+lass Solution {
+public:
+    vector<int> shuffle(vector<int>& nums, int n) {
+        for (int i = 0; i < n; i++){
+            nums[i + n] = (nums[i + n]<<10) | nums[i];
+        }
+        int j = 0;
+        for (int i = n; i < 2 * n; i++){
+            int x = nums[i] & 1023;
+            int y = nums[i]>>10;
+            nums[j] = x;
+            nums[j+1] = y;
+            j+=2;
+        }
+        return nums;
+    }
+};
+
+- in place shuffle in case of memory constraints, uses bitwise manipulation but works under specific constraint.
+- Here, all numbers were between 1 and 1000, so this code worked.
+- Phase 1 (Packing): Left-shifts y_i by 10 bits and stores x_i in the lower 10 bits using a bitwise OR (|).
+- Phase 2 (Unpacking): Uses a bitmask of 1023 to extract x_i, and a right-shift (>> 10) to extract y_i, rewriting the original array sequentially.
 
