@@ -1,0 +1,55 @@
+// First Approach {O(N)}
+class Solution {
+public:
+    vector<int> findErrorNums(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> freq(n + 1, 0);
+        int duplicate, missing;
+        for (int num: nums){
+            freq[num]++;
+        }
+        for (int i = 1; i <= n; i++){
+            if (freq[i] == 2){
+                duplicate = i;
+            }
+            else if (freq[i] == 0){
+                missing = i;
+            }
+        }
+        return {duplicate, missing};
+    }
+};
+
+- We create a frequency bucket array initialized to zeros.
+- We count how many times each number from the input appears.
+- We scan the buckets: the number with a frequency of 2 is our duplicate, and the number with a frequency of 0 is our missing value.
+
+// Second Approach {O(N)}
+class Solution {
+public:
+    vector<int> findErrorNums(vector<int>& nums) {
+        int n = nums.size();
+        int duplicate, missing;
+        for (int i = 0; i < n; i++){
+            int val = abs(nums[i]);
+            if (nums[val - 1] < 0){
+                duplicate = val;
+            }
+            else{
+                nums[val - 1] = -nums[val - 1];
+            }
+        }
+        for (int i = 0; i < n; i++){
+            if (nums[i] > 0){
+                missing = i + 1;
+                break;
+            }
+        }
+        return {duplicate, missing};
+    }
+};
+
+- Since all numbers are positive ($1$ to $n$), we can use the array elements themselves as pointers to indices. 
+- For every value val we inspect, we flip the number at nums[val - 1] to negative.
+- If we land on an index that is already negative, it means we have processed this number before—meaning val is the duplicate.
+- In the second pass, whichever index remains positive was never visited. The missing number is that index + 1.
