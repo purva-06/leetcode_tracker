@@ -10,3 +10,5 @@
 - (https://leetcode.com/problems/shuffle-the-array/?envType=problem-list-v2&envId=dsa-linear-shoal-array-i)
 - Leetcode quests -> Array I -> Q3. Max Consecutive Ones (Easy) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(1)]
 - (https://leetcode.com/problems/max-consecutive-ones/?envType=problem-list-v2&envId=dsa-linear-shoal-array-i)
+- Leetcode quests -> Array II -> Q1. Set Mismatch (Easy) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(1)]
+- (https://leetcode.com/problems/set-mismatch/?envType=problem-list-v2&envId=dsa-linear-shoal-array-ii)
