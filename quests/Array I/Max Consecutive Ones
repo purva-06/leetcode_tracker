@@ -1,1 +1,58 @@
+// First Approach {O(N)}
+class Solution {
+public:
+    int findMaxConsecutiveOnes(vector<int>& nums) {
+        int n = nums.size();
+        int count = 0;
+        int max = 0;
+        int j;
+        int i = 0;
+        while (i < n){
+            if (nums[i] == 1){
+                count=1;
+            }
+            else{
+                i++;
+                continue;
+            }
+            for (j = i+1; j < n; j++){
+                if (nums[i] == nums[j]){
+                    count++;
+                }
+                else{
+                    break;
+                }
+            }
+            if (count > max){
+                max = count;
+            }
+            i = j + 1;
+        }
+        return max;
+    }
+};
 
+- Even though it uses nested loops (while and for), the inner pointer j updates the outer pointer i (i = j + 1). 
+- This ensures that every element in the array is visited exactly once.
+- It uses 5 different state variables (n, count, max, i, j) and multiple control flow statements (continue, break), increasing the risk of off-by-one errors during quick modifications.
+
+// Second Approach {O(N)}
+class Solution {
+public:
+    int findMaxConsecutiveOnes(vector<int>& nums) {
+        int max_ones = 0;
+        int count = 0;
+        for (int num: nums){
+            if (num == 1){
+                count++;
+                max_ones = max(max_ones, count);
+            }
+            else{
+                count = 0;
+            }
+        }
+        return max_ones;
+    }
+};
+
+- A single sequential pass across the vector.
