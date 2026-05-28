@@ -1,0 +1,26 @@
+// First Approach {O(N)}
+class Solution {
+public:
+    vector<int> smallerNumbersThanCurrent(vector<int>& nums) {
+        int n = nums.size();
+        vector<pair<int, int>> sorted(n);
+        for (int i = 0; i < n; i++){
+            sorted[i] = {nums[i], i};
+        }
+        sort(sorted.begin(), sorted.end());
+        vector<int> res(n);
+        res[sorted[0].second] = 0;
+        for (int i = 1; i < n; i++){
+            if (sorted[i].first == sorted[i - 1].first){
+                res[sorted[i].second] = res[sorted[i - 1].second];
+            }
+            else{
+                res[sorted[i].second] = i;
+            }
+        }
+        return res;
+    }
+};
+
+- Bind each number to its original index before sorting.
+- Highly efficient in practice; avoids hash map overhead/collisions.
