@@ -49,7 +49,7 @@ public:
     }
 };
 
-- Since all numbers are positive ($1$ to $n$), we can use the array elements themselves as pointers to indices. 
+- Since all numbers are positive (1 to n), we can use the array elements themselves as pointers to indices. 
 - For every value val we inspect, we flip the number at nums[val - 1] to negative.
 - If we land on an index that is already negative, it means we have processed this number before—meaning val is the duplicate.
 - In the second pass, whichever index remains positive was never visited. The missing number is that index + 1.
