@@ -24,3 +24,28 @@ public:
 
 - Bind each number to its original index before sorting.
 - Highly efficient in practice; avoids hash map overhead/collisions.
+
+class Solution {
+public:
+    vector<int> smallerNumbersThanCurrent(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> sorted = nums;
+        unordered_map<int, int> count;
+        sort(sorted.begin(), sorted.end());
+        for (int i = 0; i < n; i++){
+            if (count.find(sorted[i]) == count.end()){
+                count[sorted[i]] = i;
+            }
+        }
+        vector<int> res;
+        for (int num: nums){
+            res.push_back(count[num]);
+        }
+        return res;
+    }
+};
+
+- Sort a copy of the array.
+- The first time a number appears in the sorted array, its index is exactly equal to the count of numbers smaller than it.
+- Store this Value -> Index relationship in a map, then map it back to the original array.
+
