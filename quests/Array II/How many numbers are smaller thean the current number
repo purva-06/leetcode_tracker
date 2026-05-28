@@ -49,3 +49,31 @@ public:
 - The first time a number appears in the sorted array, its index is exactly equal to the count of numbers smaller than it.
 - Store this Value -> Index relationship in a map, then map it back to the original array.
 
+// Third Approach {O(N)}
+class Solution {
+public:
+    vector<int> smallerNumbersThanCurrent(vector<int>& nums) {
+        vector<int> count(102, 0);
+        for (int num: nums){
+            count[num]++;
+        }
+        int running_sum = 0;
+        for (int i = 0; i <= 100; i++){
+            int current_freq = count[i];
+            count[i] = running_sum;
+            running_sum += current_freq;
+        }
+        vector<int> res;
+        for (int num: nums){
+            res.push_back(count[num]);
+        }
+        return res;
+    }
+};
+
+- If the problem constraints specify that the numbers in nums are small (for example, between 0 and 100), you can use Counting Sort logic.
+- Count frequencies of each number (assuming numbers are 0-100).
+- Transform the frequency array into a running sum array.
+- Keep a running total of frequencies as you loop from index 0 to 100.
+- For each bucket, swap its value with the running total, then add its old frequency to the total.
+- Loop through the original nums array and instantly fetch the precomputed answer using count[num].
