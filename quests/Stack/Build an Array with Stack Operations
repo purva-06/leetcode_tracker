@@ -1,0 +1,50 @@
+// First Approach {O(N)}
+class Solution {
+public:
+    vector<string> buildArray(vector<int>& target, int n) {
+        int s = target.size();
+        int x = 1;
+        int i = 0;
+        vector<string>res;
+        while(i < s){
+            res.push_back("Push");
+            if(target[i] != x){
+                res.push_back("Pop");
+            }
+            else{
+                i++;
+            }
+            x++;
+        }
+        return res;
+    }
+};
+
+- Every loop iteration reads a new stream number x and issues a "Push".
+- If x matches the current element we need in target[i], we keep it and advance the target pointer (i++).
+- If x does not match, it means it's an unwanted number. We immediately issue a "Pop" to discard it.
+- The stream increments (x++) on every loop execution.
+
+// Second Approach {O(N)}
+class Solution {
+public:
+    vector<string> buildArray(vector<int>& target, int n) {
+        vector<string> res;
+        int prev = 0;
+        for (int num: target){
+            int skipped = num - prev - 1;
+            for (int i = 0; i < skipped; i++){
+                res.push_back("Push");
+                res.push_back("Pop");
+            }
+            res.push_back("Push");
+            prev = num;
+        }
+        return res;
+    }
+};
+
+- Maintain a variable prev (initially 0) representing the last number successfully kept in the stack.
+- For each number num in target, calculate the skipped numbers: {skipped} = {num} - {prev} - 1.
+- Run a clean, flat loop to push a "Push" and "Pop" pair exactly skipped times.
+- Follow up with a single "Push" for the valid num, then update prev = num.
