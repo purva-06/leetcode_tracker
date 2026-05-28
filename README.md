@@ -18,3 +18,5 @@
 - (https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/description/?envType=problem-list-v2&envId=dsa-linear-shoal-array-ii)
 - Leetcode quests -> Array II -> Q3. Find the numbers disappeared from the array (Easy) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(1)]
 - (https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/?envType=problem-list-v2&envId=dsa-linear-shoal-array-ii)
+- Leetcode quests -> Stack -> Q1. Build an Array with Stack Operations (Medium) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(1)]
+- (https://leetcode.com/problems/build-an-array-with-stack-operations/description/?envType=problem-list-v2&envId=dsa-linear-shoal-stack)
