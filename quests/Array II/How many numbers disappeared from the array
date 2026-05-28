@@ -1,0 +1,79 @@
+// First Approach {O(N)}
+class Solution {
+public:
+    vector<int> findDisappearedNumbers(vector<int>& nums) {
+        int n = nums.size();
+        vector<int> freq(n+1,0);
+        for (int num: nums){
+            freq[num]++;
+        }
+        vector<int> res;
+        for (int i = 1; i <= n; i++){
+            if (freq[i] == 0){
+                res.push_back(i);
+            }
+        }
+        return res;
+    }
+};
+
+- Create a tracking array (freq) of size n + 1 initialized entirely to zeros.
+- Loop through the input array nums. 
+- For every number encountered, increment its corresponding slot: freq[num]++.
+- Loop from 1 to n. If freq[i] == 0, push i into the results array.
+
+// Second Approach {O(N)}
+class Solution {
+public:
+    vector<int> findDisappearedNumbers(vector<int>& nums) {
+        int n = nums.size();
+        for (int i = 0; i < n; i++){
+            int val = abs(nums[i]);
+            if (nums[val - 1] > 0){
+                nums[val - 1] = -nums[val - 1];
+            }
+        }
+        vector<int>res;
+        for (int i = 0; i < n; i++){
+            if (nums[i] > 0){
+                res.push_back(i + 1);
+            }
+        }
+        return res;
+    }
+};
+
+- Iterate through nums. For each element, determine its target index: int index = abs(nums[i]) - 1;
+- If the value at nums[index] is positive, multiply it by -1.
+- Run a second loop through nums. If nums[i] is still greater than 0, it means no number pointed to index i.
+- Therefore, the missing number is i + 1.
+
+// Third Approach {O(N)}
+class Solution {
+public:
+    vector<int> findDisappearedNumbers(vector<int>& nums) {
+        int n = nums.size();
+        int i = 0;
+        int correct_index;
+        while(i < n){
+            correct_index = nums[i] - 1;
+            if (nums[i] != nums[correct_index]){
+                swap(nums[i], nums[correct_index]);
+            }
+            else{
+                i++;
+            }
+        }
+        vector<int> res;
+        for (i = 0; i < n; i++){
+            if (nums[i] != i + 1){
+                res.push_back(i + 1);
+            }
+        }
+        return res;
+    }
+};
+
+- Look at the current number, calculate where it belongs: correct_idx = nums[i] - 1.
+- If nums[i] != nums[correct_idx], swap them. Do not increment i yet, because you need to evaluate the newly swapped element in the current slot.
+- If they are already equal (meaning the number is already in its correct spot OR it's a duplicate of a number already placed correctly), increment i++.
