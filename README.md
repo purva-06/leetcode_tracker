@@ -12,3 +12,7 @@
 - (https://leetcode.com/problems/max-consecutive-ones/?envType=problem-list-v2&envId=dsa-linear-shoal-array-i)
 - Leetcode quests -> Array II -> Q1. Set Mismatch (Easy) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(1)]
 - (https://leetcode.com/problems/set-mismatch/?envType=problem-list-v2&envId=dsa-linear-shoal-array-ii)
+
+# Day-3
+- Leetcode quests -> Array II -> Q2. How many numbers are smaller than the current number (Easy) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(1)]
+- (https://leetcode.com/problems/how-many-numbers-are-smaller-than-the-current-number/description/?envType=problem-list-v2&envId=dsa-linear-shoal-array-ii)
