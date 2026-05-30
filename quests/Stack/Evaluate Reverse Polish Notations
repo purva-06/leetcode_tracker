@@ -1,0 +1,97 @@
+// First Approach {O(N)}
+class Solution {
+public:
+    int evalRPN(vector<string>& tokens) {
+        int n = tokens.size();
+        vector<string> s;
+        int a, b;
+        int val = stoi(tokens[0]);
+        for (int i = 0; i < n; i++){
+            if (tokens[i] == "+"){
+                b = stoi(s.back());
+                s.pop_back();
+                a = stoi(s.back());
+                s.pop_back();
+                val = a + b;
+                s.push_back(to_string(val));
+            }
+            else if (tokens[i] == "-"){
+                b = stoi(s.back());
+                s.pop_back();
+                a = stoi(s.back());
+                s.pop_back();
+                val = a - b;
+                s.push_back(to_string(val));
+            } 
+            else if (tokens[i] == "*"){
+                b = stoi(s.back());
+                s.pop_back();
+                a = stoi(s.back());
+                s.pop_back();
+                val = a * b;
+                s.push_back(to_string(val));
+            }
+            else if (tokens[i] == "/"){
+                b = stoi(s.back());
+                s.pop_back();
+                a = stoi(s.back());
+                s.pop_back();
+                val = a / b;
+                s.push_back(to_string(val));
+            }
+            else{
+                s.push_back(tokens[i]);
+            }
+        }
+        return val;
+    }
+};
+
+- Data Structure: Uses vector<string> as the stack.
+- Workflow: Elements remain strings inside the stack. 
+            When hitting an operator, it pops them, parses them to integers using stoi.
+            Computes the result, converts it back to a string with to_string, and pushes it.
+- Bottlenecks: Significant performance loss due to repetitive string allocations and conversion steps. 
+               It also suffers from frequent dynamic vector resizes because capacity isn't pre-allocated.
+
+// Second Approach {O(N)}
+class Solution {
+public:
+    int evalRPN(vector<string>& tokens) {
+        int n = tokens.size();
+        vector<int> s(n);
+        int a, b;
+        for (const string &token: tokens){
+            if (token == "+" || token == "-" || token == "*" || token == "/"){
+                b = s.back();
+                s.pop_back();
+                a = s.back();
+                s.pop_back();
+                if (token == "+"){
+                    s.push_back(a + b);
+                }
+                else if (token == "-"){
+                    s.push_back(a - b);
+                } 
+                else if (token == "*"){
+                    s.push_back(a * b);
+                }
+                else{
+                    s.push_back(a / b);
+                }
+            }
+            else{
+                s.push_back(stoi(token));
+            }
+        }
+        return s.back();
+    }
+};
+
+- Data Structure: Uses vector<int> as the stack.
+- Workflow: Iterates cleanly using a range-based loop (const string& token : tokens). 
+            Operands are converted to integers only once upon entry, keeping all stack math purely numerical.
+- Key Optimizations:  
+1. Memory: Pre-allocates vector capacity to completely eliminate mid-loop resizing.
+2. Pass-by-Reference: const string& reads strings directly without making costly vector copies.
+3. Efficiency: Eliminates to_string() entirely and slashes redundant stoi() parsing.
