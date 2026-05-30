@@ -26,3 +26,64 @@ public:
         return ex_time;
     }
 };
+
+- Maintain an integer stack process to hold active function IDs and a prev marker.
+- Parse logs using standard string functions (substr and stoi).
+- On a "start" event: If the stack isn't empty, add the time chunk (timestamp - prev) to the function at process.top().
+- Push the new function ID onto the stack. Update prev = timestamp.
+- On an "end" event: The function at process.top() is finishing. 
+- Because it runs through the end of this second, add (timestamp - prev + 1) to its total. Pop it from the stack. Update prev = timestamp + 1 (the next event boundary begins next second).
+
+// Second Approach {O(N)}
+class Solution {
+public:
+    vector<int> exclusiveTime(int n, vector<string>& logs) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        vector<int> ex_time(n, 0);
+        vector<int> process;
+        process.reserve(n / 2);
+        int prev = 0;
+        for (const string &log: logs){
+            int id = 0;
+            int idx = 0;
+            int len = log.length();
+            while (log[idx] != ':'){
+                id = id * 10 + (log[idx] - '0');
+                idx++;
+            }
+            idx++;
+            bool is_start = (log[idx] == 's');
+            while (log[idx] != ':'){
+                idx++;
+            }
+            idx++;
+            int timestamp = 0;
+            while (idx < len){
+                timestamp = timestamp * 10 + (log[idx] - '0');
+                idx++;
+            }
+            if (is_start){
+                if (!process.empty()){
+                    ex_time[process.back()] += timestamp - prev;
+                }
+                process.push_back(id);
+                prev = timestamp;
+            }
+            else{
+                ex_time[process.back()] += timestamp - prev + 1;
+                process.pop_back();
+                prev = timestamp + 1;
+            }
+        }
+        return ex_time;
+    }
+};
+
+- Fast I/O Decoupling: Uses ios_base::sync_with_stdio(false); cin.tie(NULL); to sever ties between C and C++ streams, allowing massive text data processing at the hardware limit.
+- Zero-Allocation Custom Parsing: Completely skips log.substr() and std::stoi. 
+- Instead, it reads characters directly out of the main string reference sequentially using math logic: {id} = {id} * 10 + ({character} - '0') This avoids pushing and pulling tiny substring blocks into heap memory.
+- Single-Character Status Flag (is_start): Instead of comparing entire text blocks (type == "start"), it reads a single byte: bool is_start = (log[idx] == 's'). 
+- This executes in exactly one CPU clock cycle.
+- Vector as a Stack with Memory Reserving: Swaps std::stack (which uses segmented std::deque memory underneath) for a flat std::vector combined with process.reserve(n / 2). 
+- This provides perfect cache locality and guarantees the stack will never dynamically resize.
