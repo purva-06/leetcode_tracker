@@ -20,3 +20,7 @@
 - (https://leetcode.com/problems/find-all-numbers-disappeared-in-an-array/?envType=problem-list-v2&envId=dsa-linear-shoal-array-ii)
 - Leetcode quests -> Stack -> Q1. Build an Array with Stack Operations (Medium) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(1)]
 - (https://leetcode.com/problems/build-an-array-with-stack-operations/description/?envType=problem-list-v2&envId=dsa-linear-shoal-stack)
+
+# Day-4
+- Leetcode quests -> Stack -> Q2. Evaluate Reverse Polish Notations (Medium) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(N)]
+- (https://leetcode.com/problems/evaluate-reverse-polish-notation/?envType=problem-list-v2&envId=dsa-linear-shoal-stack)
