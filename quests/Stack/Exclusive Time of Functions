@@ -1,1 +1,28 @@
-
+// First Approach {O(N)}
+class Solution {
+public:
+    vector<int> exclusiveTime(int n, vector<string>& logs) {
+        vector<int> ex_time(n, 0);
+        stack<int> process;
+        int prev = 0;
+        for (const string &log: logs){
+            size_t first_c = log.find(':');
+            size_t last_c = log.find_last_of(':');
+            int id = stoi(log.substr(0, first_c));
+            string type = log.substr(first_c + 1, last_c - first_c - 1);
+            int timestamp = stoi(log.substr(last_c + 1));
+            if (type == "start"){
+                if (!process.empty()){
+                    ex_time[process.top()] += timestamp - prev;
+                }
+                process.push(id);
+                prev = timestamp;
+            } else{
+                ex_time[process.top()] += timestamp - prev + 1;
+                process.pop();
+                prev = timestamp + 1;
+            }
+        }
+        return ex_time;
+    }
+};
