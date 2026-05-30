@@ -24,3 +24,5 @@
 # Day-4
 - Leetcode quests -> Stack -> Q2. Evaluate Reverse Polish Notations (Medium) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(N)]
 - (https://leetcode.com/problems/evaluate-reverse-polish-notation/?envType=problem-list-v2&envId=dsa-linear-shoal-stack)
+- Leetcode quests -> Stack -> Q3. Exclusive Time of Functions (Medium) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(N)]
+- (https://leetcode.com/problems/exclusive-time-of-functions/?envType=problem-list-v2&envId=dsa-linear-shoal-stack)
