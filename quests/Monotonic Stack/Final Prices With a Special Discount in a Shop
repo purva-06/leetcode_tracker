@@ -1,0 +1,66 @@
+// First Approach {O(N²)}
+class Solution {
+public:
+    vector<int> finalPrices(vector<int>& prices) {
+        int n = prices.size();
+        for (int i = 0; i < n - 1; i++){
+            for (int j = i + 1; j < n; j++){
+                if (prices[j] <= prices[i]){
+                    prices[i] -= prices[j];
+                    break;
+                }
+            }
+        }
+        return prices;
+    }
+};
+
+- Mechanism: Uses nested loops. For each item, it scans all elements to its right until it finds the first one that is smaller or equal.
+- Time Complexity: O(n^2)
+- Space Complexity: O(1) (In-place)
+- Takeaway: Simple to understand, but too slow for larger datasets.
+
+// Second Approach {O(N)}
+class Solution {
+public:
+    vector<int> finalPrices(vector<int>& prices) {
+        int n = prices.size();
+        stack<int> st;
+        for (int i = n - 1; i >= 0; i--){
+            int og_price = prices[i];
+            while (!st.empty() && st.top() > og_price){
+                st.pop();
+            }
+            if (!st.empty()){
+                prices[i] -= st.top();
+            }
+            st.push(og_price);
+        }
+        return prices;
+    }
+};
+
+- Mechanism: Iterates from the end of the array backward, maintaining a stack of values in strictly increasing order from top to bottom to look up valid discounts.
+- Time Complexity: O(n)
+- Space Complexity: O(n)
+
+// Third Approach{O(N)}
+class Solution {
+public:
+    vector<int> finalPrices(vector<int>& prices) {
+        int n = prices.size();
+        stack<int> st;
+        for (int i = 0; i < n; i++){
+            while (!st.empty() && prices[st.top()] >= prices[i]){
+                prices[st.top()] -= prices[i];
+                st.pop();
+            }
+            st.push(i);
+        }
+        return prices;
+    }
+};
+
+- Mechanism: Iterates from start to finish, storing the indices of elements in a stack. When a lower or equal price is encountered, it applies that price as a discount to the indices waiting in the stack.
+- Time Complexity: O(n)
+- Space Complexity: O(n)
