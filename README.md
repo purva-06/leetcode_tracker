@@ -26,3 +26,7 @@
 - (https://leetcode.com/problems/evaluate-reverse-polish-notation/?envType=problem-list-v2&envId=dsa-linear-shoal-stack)
 - Leetcode quests -> Stack -> Q3. Exclusive Time of Functions (Medium) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(N)]
 - (https://leetcode.com/problems/exclusive-time-of-functions/?envType=problem-list-v2&envId=dsa-linear-shoal-stack)
+
+# Day-5
+- Leetcode quests -> Monotonic Stack -> Q1. Final Prices with a special discount in a shop (Easy) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(N)]
+- (https://leetcode.com/problems/final-prices-with-a-special-discount-in-a-shop/?envType=problem-list-v2&envId=dsa-linear-shoal-monotonic-stack)
