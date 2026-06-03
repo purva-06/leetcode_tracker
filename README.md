@@ -30,3 +30,7 @@
 # Day-5
 - Leetcode quests -> Monotonic Stack -> Q1. Final Prices with a special discount in a shop (Easy) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(N)]
 - (https://leetcode.com/problems/final-prices-with-a-special-discount-in-a-shop/?envType=problem-list-v2&envId=dsa-linear-shoal-monotonic-stack)
+
+# Day-6
+- Leetcode quests -> Monotonic Stack -> Q2. Daily Temperatures (Medium) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(N)]
+- (https://leetcode.com/problems/daily-temperatures/description/?envType=problem-list-v2&envId=dsa-linear-shoal-monotonic-stack)
