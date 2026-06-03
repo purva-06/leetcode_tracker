@@ -19,6 +19,14 @@ public:
     }
 };
 
+- Loop through the temperatures array.
+- While the current day's temperature is warmer than the temperature at st.top():
+- Calculate the wait days: i - st.top().
+- Directly overwrite temperatures[st.top()] with this calculated value.
+- Pop the index from the stack.
+- Push the current index i onto the stack.
+- Final Cleanup: Once the loop ends, any indices remaining in the stack have no warmer days ahead. Loop through the stack and set their corresponding positions in temperatures to 0.
+
 // Second Approach {O(N)}
 class Solution {
 public:
@@ -37,3 +45,39 @@ public:
         return result;
     }
 };
+
+- Loop through each day.
+- While the current day is warmer than the day indexed at the top of the stack:
+- Calculate the day difference: current_index - stack.top().
+- Store it in the result array.
+- Pop the index from the stack.
+- Push the current day's index onto the stack.
+
+// Third Approach {O(N)}
+class Solution {
+public:
+    vector<int> dailyTemperatures(vector<int>& temperatures) {
+        int n = temperatures.size();
+        vector<int> result (n, 0);
+        for (int i = n - 2; i >= 0; i--){
+            int j = i + 1;
+            while (j < n && temperatures[j] <= temperatures[i]){
+                if (result[j] == 0){
+                    j = n;
+                }
+                else{
+                    j += result[j];
+                }
+            }
+            if (j < n){
+                result[i] = j - i;
+            }
+        }
+        return result;
+    }
+};
+
+- Start at the second-to-last day (the last day is always 0).
+- Compare day i with day j = i + 1.
+- If temperatures[j] <= temperatures[i], do not check j + 1. Instead, jump to j + res[j] (the next day warmer than j).
+- Repeat the jump until you find a warmer day or hit a day with a 0 result (meaning no warmer day exists).
