@@ -1,0 +1,40 @@
+// First Approach {O(N)}
+class Solution {
+public:
+    int largestRectangleArea(vector<int>& heights) {
+        int n = heights.size();
+        int max_area = 0;
+        stack<int> st;
+        for (int i = 0; i <= n; i++){
+            int current_height = (i==n) ? 0 : heights[i];
+            while (!st.empty() && heights[st.top()] > current_height){
+                int height = heights[st.top()];
+                st.pop();
+                int width = st.empty() ? i : (i - st.top() - 1);
+                max_area = max(max_area, height * width);
+            } 
+            st.push(i);
+        }
+        return max_area;
+    }
+};
+
+- Core Idea: Instead of checking every pair of boundaries (brute force), find the maximum rectangle for every single bar acting as the shortest bar (the bottleneck).
+- The Trick: A bar can only extend its rectangle left and right until it hits a bar that is strictly shorter than itself. We use a Monotonically Increasing Stack to find these boundaries efficiently.
+- 1. Key Concepts
+  Left Boundary (L): The first index to the left with a height strictly less than the current bar.
+  Right Boundary (R): The first index to the right with a height strictly less than the current bar.
+  Width Formula: When a bar is popped, its width is calculated as: {Width} = R - L - 1
+  Special Case (Empty Stack): If there is no smaller element to the left, the stack becomes empty after popping. This means the bar can extend all the way to index 0, so L = -1, simplifying the formula to:{Width} = R
+- 2. The Mechanics (Step-by-Step)
+  Maintain an Increasing Stack: Store indices of bars in the stack. We only want heights to get taller as we go up the stack.
+  Triggering a Calculation: As we loop forward, if heights[i] is shorter than the bar at the top of the stack (heights[st.top()]), a boundary is found!The current index i acts as the Right Boundary (R) for the bar at the top of the stack.
+  Popping and Measuring: Pop the top bar from the stack; let its height be h.Look at the new top of the stack. That index is its Left Boundary (L).
+  Calculate area: {Area} = h * (i - {st.top()} - 1) (or just h * i if the stack is now empty).
+  Update max_area.
+  Repeat until the current bar is no longer shorter than the top of the stack.
+  Push: Push the current index i onto the stack.
+- 3. Crucial Optimization Optimizations
+  The Dummy Bar (i == n): The loop runs up to i <= n. When i == n, we simulate a dummy bar of height 0. 
+  Because 0 is shorter than everything, it forces the stack to pop and calculate the area for all remaining bars that reached the end of the histogram.
+  Strict Comparison (> vs >=): We use heights[st.top()] > current_height. This allows duplicate heights to sit together on the stack, preventing redundant/incomplete calculations and ensuring the full width is calculated when the last duplicate is popped.
