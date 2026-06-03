@@ -1,6 +1,15 @@
 # leetcode_tracker
 -> Daily or not-so daily updates of the problems I solve on leetcode.
 
+# My Learning Workflow & AI Integration
+This repository is more than just a collection of accepted LeetCode submissions, it is a continuous log of my algorithmic growth. To accelerate my mastery of complex DSA, I use **Gemini (Google AI)** as an interactive code auditor and learning partner.
+Rather than using AI to generate boilerplate code, I integrate it directly into a rigorous, four-step feedback loop:
+# My 4 Step Problem Solving Process
+1. I always start by writing and submitting my own code first, whether that results in a brute force solution or an optimized linear solution.
+2. After securing an initial solution, I prompt the AI to introduce alternative approaches.
+3. For any newly introduced approach, I aggressively audit the subtle conditions that cause confusion (I also add this part in my notes).
+4. My initial, rough conceptual notes can often contain logical gaps or technical inaccuracies. I collaborate with the AI to refine, polish, and structure these notes into scannable technical summaries.
+
 # Day-1 (Taking it slow)
 - Leetcode quests -> Array I -> Q1. Concatenation of Array (Easy) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(N)]
 - (https://leetcode.com/problems/concatenation-of-array/description/?envType=problem-list-v2&envId=dsa-linear-shoal-array-i)
@@ -34,3 +43,5 @@
 # Day-6
 - Leetcode quests -> Monotonic Stack -> Q2. Daily Temperatures (Medium) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(N)]
 - (https://leetcode.com/problems/daily-temperatures/description/?envType=problem-list-v2&envId=dsa-linear-shoal-monotonic-stack)
+- Leetcode quests -> Monotonic Stack -> Q3. Largest Rectangle in Histogram (Hard) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(N)]
+- (https://leetcode.com/problems/largest-rectangle-in-histogram/?envType=problem-list-v2&envId=dsa-linear-shoal-monotonic-stack)
