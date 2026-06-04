@@ -1,1 +1,76 @@
+// First Approach {O(N1 X N2)}
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        int n1 = nums1.size();
+        int n2 = nums2.size();
+        int j;
+        vector<int> nge (n1, -1);
+        for (int i = 0; i < n1; i++){
+            for (j = 0; j < n2; j++){
+                if (nums1[i] == nums2[j]){
+                    break;
+                }
+            }
+            j++;
+            while (j < n2){
+                if (nums2[j] > nums1[i]){
+                    nge[i] = nums2[j];
+                    break;
+                }
+                j++;
+            }
+        }
+        return nge;
+    }
+};
 
+// Second Approach {O(N1 + N2)}
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        stack<int> st;
+        unordered_map<int,int> mp;
+        for (int num: nums2){
+            while (!st.empty() && num > st.top()){
+                mp[st.top()] = num;
+                st.pop();
+            }
+            st.push(num);
+        }
+        while (!st.empty()){
+            mp[st.top()] = -1;
+            st.pop();
+        }
+        for (int &num: nums1){
+            num = mp[num];
+        }
+        return nums1;
+    }
+};
+
+// Third Approach {O(N1 + N2)}
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
+        stack<int> st;
+        unordered_map<int,int> mp;
+        for (int num: nums2){
+            while (!st.empty() && num > st.top()){
+                mp[st.top()] = num;
+                st.pop();
+            }
+            st.push(num);
+        }
+        vector<int> result;
+        for (int num: nums1){
+            if (mp.count(num)){
+                result.push_back(mp[num]);
+            }
+            else{
+                result.push_back(-1);
+            }
+        }
+        return result;
+    }
+};
