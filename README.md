@@ -50,4 +50,4 @@ Rather than using AI to generate boilerplate code, I integrate it directly into 
 - Leetcode Problems -> 496. Next Greater Element I (Easy) -> Fastest Approach [Time Complexity: O(N1 + N2), Space Complexity: O(N2)]
 - (https://leetcode.com/problems/next-greater-element-i/)
 - Leetcode Problem -> 503. Next Greater Element II (Medium) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(N)]
-- (leetcode.com/problems/next-greater-element-ii/)
+- (https://leetcode.com/problems/next-greater-element-ii/)
