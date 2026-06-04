@@ -25,6 +25,11 @@ public:
     }
 };
 
+- Mechanism: For every element in nums1, find its matching index in nums2. From that index, run a nested loop scanning strictly to the right until you find a larger number.
+- Pros: Highly intuitive; zero extra memory overhead.
+- Cons: Inefficient. Re-scans the same elements of nums2 repeatedly.
+- When to use: Only if array sizes are extremely small (N < 100) or memory is severely constrained.
+
 // Second Approach {O(N1 + N2)}
 class Solution {
 public:
@@ -74,3 +79,12 @@ public:
         return result;
     }
 };
+
+- Mechanism: Instead of looking for answers query-by-query, look at nums2 globally. Maintain a stack that keeps track of elements waiting for their "next greater" match.
+- The "Rule": The stack must remain monotonically decreasing (largest at the bottom, smallest at the top).
+- Processing: 
+  Iterate through nums2.
+  While the current number is greater than the stack's top element, the current number is officially the NGE for that top element. Pop it and record the pairing in a hash map (mp[popped] = current).
+  Push the current number onto the stack.
+  Any elements remaining in the stack at the end have no greater element to their right (default to -1).
+  Map nums1 elements to their answers using the hash map in O(1) time per element.
