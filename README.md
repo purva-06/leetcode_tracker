@@ -45,3 +45,7 @@ Rather than using AI to generate boilerplate code, I integrate it directly into 
 - (https://leetcode.com/problems/daily-temperatures/description/?envType=problem-list-v2&envId=dsa-linear-shoal-monotonic-stack)
 - Leetcode quests -> Monotonic Stack -> Q3. Largest Rectangle in Histogram (Hard) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(N)]
 - (https://leetcode.com/problems/largest-rectangle-in-histogram/?envType=problem-list-v2&envId=dsa-linear-shoal-monotonic-stack)
+
+# Day-7
+- Leetcode Problems -> 496. Next Greater Element I (Easy) -> astest Approach [Time Complexity: O(N1 + N2), Space Complexity: O(N2)]
+- (https://leetcode.com/problems/next-greater-element-i/)
