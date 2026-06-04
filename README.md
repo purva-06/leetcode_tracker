@@ -47,5 +47,7 @@ Rather than using AI to generate boilerplate code, I integrate it directly into 
 - (https://leetcode.com/problems/largest-rectangle-in-histogram/?envType=problem-list-v2&envId=dsa-linear-shoal-monotonic-stack)
 
 # Day-7
-- Leetcode Problems -> 496. Next Greater Element I (Easy) -> astest Approach [Time Complexity: O(N1 + N2), Space Complexity: O(N2)]
+- Leetcode Problems -> 496. Next Greater Element I (Easy) -> Fastest Approach [Time Complexity: O(N1 + N2), Space Complexity: O(N2)]
 - (https://leetcode.com/problems/next-greater-element-i/)
+- Leetcode Problem -> 503. Next Greater Element II (Medium) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(N)]
+- (leetcode.com/problems/next-greater-element-ii/)
