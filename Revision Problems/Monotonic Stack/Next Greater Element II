@@ -1,1 +1,22 @@
-
+// First Approach {O(N)}
+class Solution {
+public:
+    vector<int> nextGreaterElements(vector<int>& nums) {
+        stack<int> st;
+        int n = nums.size();
+        vector<int> nge(n, -1);
+        for (int i = 2 * n - 1; i >= 0; i--){
+            int current_val = nums[i % n];
+            while(!st.empty() && st.top() <= current_val){
+                st.pop();
+            }
+            if (i < n){
+                if (!st.empty()){
+                    nge[i] = st.top();
+                }
+            }
+            st.push(current_val);
+        }
+        return nge;
+    }
+};
