@@ -21,6 +21,9 @@ public:
     }
 };
 
+- Concept: Traverse the array from right to left (2n-1 down to 0). You look "ahead" into the stack to find the first element that is strictly greater than the current element.
+- he backward pass performs exactly 2n pushes.
+
 // Second Approach {O(N)}
 class Solution {
 public:
@@ -41,3 +44,6 @@ public:
         return nge;
     }
 };
+
+- Concept: Traverse the array from left to right (0 up to 2n-1). The current element acts as the potential "next greater element" for unresolved indices waiting inside the stack.
+-  The forward pass utilizes a guard (i < n) that caps the number of pushes at exactly n, cutting stack operations in half.
