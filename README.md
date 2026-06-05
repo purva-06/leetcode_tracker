@@ -1,4 +1,4 @@
-# leetcode_tracker
+# leetcode_tracker (Paused)
 -> Daily or not-so daily updates of the problems I solve on leetcode.
 
 # My Learning Workflow & AI Integration
