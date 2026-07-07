@@ -51,3 +51,7 @@ Rather than using AI to generate boilerplate code, I integrate it directly into 
 - (https://leetcode.com/problems/next-greater-element-i/)
 - Leetcode Problem -> 503. Next Greater Element II (Medium) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(N)]
 - (https://leetcode.com/problems/next-greater-element-ii/)
+
+# Day-8
+- Leetcode Problems -> 946. Validate Stack Sequences (Medium) -> Fastest Approach [Time Complexity: O(N), Space Complexity: O(N)]
+- (https://leetcode.com/problems/validate-stack-sequences/)
