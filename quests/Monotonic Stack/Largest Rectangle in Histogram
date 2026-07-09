@@ -38,3 +38,26 @@ public:
   The Dummy Bar (i == n): The loop runs up to i <= n. When i == n, we simulate a dummy bar of height 0. 
   Because 0 is shorter than everything, it forces the stack to pop and calculate the area for all remaining bars that reached the end of the histogram.
   Strict Comparison (> vs >=): We use heights[st.top()] > current_height. This allows duplicate heights to sit together on the stack, preventing redundant/incomplete calculations and ensuring the full width is calculated when the last duplicate is popped.
+
+// Brute Force {O(N)}
+#include <bits/stdc++.h>
+using namespace std;
+int largest_rect (vector<int>h){
+    int max_a = 0;
+    int n = h.size();
+    for (int i = 0; i < n; i++) {
+        int min_h = INT_MAX;
+        for (int j = i; j < n; j++) {
+            min_h = min(min_h, h[j]);
+            int width = j - i + 1;
+            int area = min_h * width;
+            max_a = max(max_a, area);
+        }
+    }
+    return max_a;
+}
+int main(){
+    vector<int> h={2,1,5,6,2,3};
+    cout<<largest_rect(h);
+    return 0;
+}
