@@ -39,7 +39,7 @@ public:
   Because 0 is shorter than everything, it forces the stack to pop and calculate the area for all remaining bars that reached the end of the histogram.
   Strict Comparison (> vs >=): We use heights[st.top()] > current_height. This allows duplicate heights to sit together on the stack, preventing redundant/incomplete calculations and ensuring the full width is calculated when the last duplicate is popped.
 
-// Brute Force {O(N)}
+// Brute Force {O(N²)}
 #include <bits/stdc++.h>
 using namespace std;
 int largest_rect (vector<int>h){
